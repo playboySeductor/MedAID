@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patients",
+  "info": {
+    "name": "Patient",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "phoneNumber": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 10,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "ailments": {
+      "type": "text",
+      "required": false
+    },
+    "recommendations": {
+      "type": "array",
+      "required": false
+    },
+    "medicines": {
+      "type": "text",
+      "required": false
+    },
+    "lastSession": {
+      "type": "datetime"
+    },
+    "reports": {
+      "collection": "record",
+      "via": "patient"
+    },
+    "doctors": {
+      "collection": "doctor",
+      "via": "patients",
+      "dominant": true
+    },
+    "DOB": {
+      "type": "date",
+      "required": true
+    },
+    "sex": {
+      "type": "enumeration",
+      "enum": ["M", "F", "O"],
+      "required": true
+    },
+    "height": {
+      "type": "decimal"
+    },
+    "weight": {
+      "type": "decimal"
+    },
+    "maritalStatus": {
+      "type": "enumeration",
+      "enum": ["married", "single"],
+      "required": true
+    }
+  }
+}
